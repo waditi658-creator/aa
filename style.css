@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    color: black;
+}
+
+/* Soft Changing Background */
+.gradient-bg {
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.center-box {
+    padding-top: 150px;
+}
+
+.main-title {
+    font-size: 50px;
+}
+
+.subtitle {
+    font-size: 20px;
+}
+
+.emoji {
+    font-size: 40px;
+    margin: 20px;
+}
+
+.button-group {
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    margin: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.yes-btn {
+    background: #ff4e50;
+    color: white;
+}
+
+.no-btn {
+    background: #333;
+    color: white;
+}
+
+/* Envelope */
+.envelope {
+    font-size: 120px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.envelope:hover {
+    transform: scale(1.2);
+}
+
+.hidden {
+    display: none;
+}
+
+.letter-box {
+    margin: 40px auto;
+    width: 70%;
+    background: rgba(255,255,255,0.2);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.timer {
+    font-size: 20px;
+    margin: 15px;
+}
+
+.final-line {
+    margin-top: 30px;
+    font-size: 28px;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 20px red; }
+}
+
+/* Karan selection cards */
+
+.karan-options{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.karan-card{
+background:rgba(255,255,255,0.3);
+padding:20px;
+width:150px;
+border-radius:20px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.karan-card:hover{
+transform:scale(1.1);
+background:rgba(255,255,255,0.5);
+}
+
+.karan-card h2{
+font-size:40px;
+margin:10px 0;
+}
+
+#messageBox{
+margin-top:30px;
+}
+
+canvas{
+background:white;
+display:block;
+margin:30px auto;
+border-radius:12px;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+}

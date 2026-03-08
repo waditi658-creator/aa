@@ -1,0 +1,71 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>One More Thing ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="gradient-bg">
+
+<div class="center-box">
+
+<h1 class="main-title">Before You Go Ahead… 🥺</h1>
+
+<p class="subtitle">Which Karan do you want to be today?</p>
+
+<div class="karan-options">
+
+<div class="karan-card" onclick="wrongChoice()">
+<h2>😡</h2>
+<p>Angry Karan</p>
+</div>
+
+<div class="karan-card" onclick="wrongChoice()">
+<h2>😐</h2>
+<p>Silent Karan</p>
+</div>
+
+<div class="karan-card good" onclick="rightChoice()">
+<h2>🥰</h2>
+<p>My Sweet Karan</p>
+</div>
+
+</div>
+
+<div id="messageBox"></div>
+
+</div>
+
+<script>
+
+function wrongChoice(){
+document.getElementById("messageBox").innerHTML =
+"<p class='subtitle'>Nooo 😭 I don’t want this Karan… try again!</p>";
+}
+
+function rightChoice(){
+document.getElementById("messageBox").innerHTML =
+"<p class='subtitle'>Yes! This is my Karan ❤️</p><br><button class='btn yes-btn' onclick='goToGift()'>Next 🎁</button>";
+}
+
+function goToGift(){
+window.location.href="game.html";
+}
+
+</script>
+
+</body>
+</html>
+
+</div>
+
+<script>
+function goToGift(){
+    window.location.href = "./game.html";
+}
+</script>
+
+</body>
+</html>

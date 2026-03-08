@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dodge Game 🎮</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="gradient-bg">
+
+<h1 class="main-title">Mini Game 🎮</h1>
+<p class="subtitle">Avoid the red blocks for 10 seconds to unlock the gift!</p>
+
+<canvas id="gameCanvas" width="400" height="500"></canvas>
+
+<div id="gameResult"></div>
+
+<script>
+
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+let playerX = 180;
+const playerWidth = 40;
+const playerHeight = 40;
+
+let blocks = [];
+let gameOver = false;
+
+let startTime = Date.now();
+
+document.addEventListener("keydown", function(e){
+
+if(e.key==="ArrowLeft" || e.key==="a"){
+playerX -= 20;
+}
+
+if(e.key==="ArrowRight" || e.key==="d"){
+playerX += 20;
+}
+
+if(playerX < 0) playerX = 0;
+if(playerX > canvas.width - playerWidth) playerX = canvas.width - playerWidth;
+
+});
+
+function createBlock(){
+
+blocks.push({
+x: Math.random() * (canvas.width - 40),
+y: -40,
+size: 40
+});
+
+}
+
+setInterval(createBlock, 900);
+
+function update(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+/* player */
+ctx.fillStyle="blue";
+ctx.fillRect(playerX,460,playerWidth,playerHeight);
+
+/* blocks */
+
+ctx.fillStyle="red";
+
+for(let i=0;i<blocks.length;i++){
+
+blocks[i].y += 4;
+
+ctx.fillRect(blocks[i].x, blocks[i].y, blocks[i].size, blocks[i].size);
+
+/* collision */
+
+if(
+playerX < blocks[i].x + blocks[i].size &&
+playerX + playerWidth > blocks[i].x &&
+460 < blocks[i].y + blocks[i].size &&
+460 + playerHeight > blocks[i].y
+){
+
+gameOver = true;
+
+document.getElementById("gameResult").innerHTML =
+"<h2>Game Over 😄 Refresh to try again</h2>";
+
+}
+
+}
+
+/* win */
+
+let time = (Date.now() - startTime) / 1000;
+
+if(time > 10 && !gameOver){
+
+gameOver = true;
+
+document.getElementById("gameResult").innerHTML =
+"<h2>You Win 🎉</h2><button class='btn yes-btn' onclick='goGift()'>Open Gift 🎁</button>";
+
+}
+
+if(!gameOver){
+requestAnimationFrame(update);
+}
+
+}
+
+function goGift(){
+window.location.href="gift.html";
+}
+
+update();
+
+</script>
+
+</body>
+</html>
